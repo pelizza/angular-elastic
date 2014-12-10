@@ -145,7 +145,9 @@ angular.module('monospaced.elastic', [])
                 mirror.style.width = width + 'px';
               }
 
-              mirrorHeight = mirror.scrollHeight;
+              // FIXME This is a workaround for IE11, where scrollHeight is 0
+              // mirrorHeight = mirror.scrollHeight;
+              mirrorHeight = mirror.scrollHeight > 0 ? mirror.scrollHeight : 20;
 
               if (mirrorHeight > maxHeight) {
                 mirrorHeight = maxHeight;
